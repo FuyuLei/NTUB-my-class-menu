@@ -7,6 +7,7 @@
 
   <title>My Class Menu</title>
 
+  <link rel="shortcut icon" type="image/png" href="./favicon.ico" />
   <link href="./assest/materialize/css/materialize.icon.css" rel="stylesheet">
   <link type="text/css" rel="stylesheet" href="./assest/materialize/css/materialize.min.css" media="screen,projection" />
 </head>
@@ -45,6 +46,8 @@
   <script type="text/javascript" src="./assest/vue/vue.js"></script>
 
   <script>
+    Vue.config.productionTip = false
+
     new Vue({
       el: '#app',
       data: {
