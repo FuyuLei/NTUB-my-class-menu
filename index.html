@@ -26,11 +26,11 @@
       </thead>
       <tbody>
         <tr v-for="(t, i) in time">
-          <td>{{ t[0] }}<br>{{ t[1] }} - {{ t[2] }}</td>
+          <td>{{ t[1] }} - {{ t[2] }}</td>
           <td v-for="j in [0, 1, 2, 3, 4]" v-if="classes[j] != null">
-            {{ classes[j][i] != null ? classes[j][i]['name'] : "" }}<br>
-            {{ classes[j][i] != null ? classes[j][i]['teacher'] : "" }}<br>
-            {{ classes[j][i] != null ? classes[j][i]['room'] : "" }}
+            <p>{{ classes[j][i] != null ? classes[j][i]['name'] : "" }}</p>
+            <p>{{ classes[j][i] != null ? classes[j][i]['teacher'] : "" }}</p>
+            <p>{{ classes[j][i] != null ? classes[j][i]['room'] : "" }}</p>
           </td>
         </tr>
       </tbody>
