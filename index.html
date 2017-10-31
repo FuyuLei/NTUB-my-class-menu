@@ -16,17 +16,20 @@
     <table class="centered striped">
       <thead>
         <tr>
-          <th>#</th>
-          <th>星期一</th>
-          <th>星期二</th>
-          <th>星期三</th>
-          <th>星期四</th>
-          <th>星期五</th>
+          <th style="width: 17%;">#</th>
+          <th style="width: 16%;">星期一</th>
+          <th style="width: 16%;">星期二</th>
+          <th style="width: 16%;">星期三</th>
+          <th style="width: 16%;">星期四</th>
+          <th style="width: 16%;">星期五</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="(t, i) in time">
-          <td>{{ t[1] }} - {{ t[2] }}</td>
+          <td>
+            <p>{{ t[0] }}</p>
+            <p>{{ t[1] }}<br>|<br>{{ t[2] }}</p>
+          </td>
           <td v-for="j in [0, 1, 2, 3, 4]" v-if="classes[j] != null">
             <p>{{ classes[j][i] != null ? classes[j][i]['name'] : "" }}</p>
             <p>{{ classes[j][i] != null ? classes[j][i]['teacher'] : "" }}</p>
