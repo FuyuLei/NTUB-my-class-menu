@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>My Class Menu</title>
+
+  <link href="./assest/materialize/css/materialize.icon.css" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="./assest/materialize/css/materialize.min.css" media="screen,projection" />
+</head>
+
+<body>
+  <div id="app">
+    <table class="centered striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>星期一</th>
+          <th>星期二</th>
+          <th>星期三</th>
+          <th>星期四</th>
+          <th>星期五</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(t, i) in time">
+          <td>{{ t[0] }}<br>{{ t[1] }} - {{ t[2] }}</td>
+          <td v-for="j in [0, 1, 2, 3, 4]" v-if="classes[j] != null">
+            {{ classes[j][i] != null ? classes[j][i]['name'] : "" }}<br>
+            {{ classes[j][i] != null ? classes[j][i]['teacher'] : "" }}<br>
+            {{ classes[j][i] != null ? classes[j][i]['room'] : "" }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script type="text/javascript" src="./assest/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="./assest/materialize/js/materialize.min.js"></script>
+  <script type="text/javascript" src="./assest/vue/vue.js"></script>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        time: [],
+        classes: []
+      },
+      created() {
+        // get time
+        fetch('./data/time.json').then((response) => {
+          return response.json()
+        }).then((json) => {
+          this.time = json
+        }).catch((error) => {
+          Materialize.toast('Get data error.', 3000)
+          console.log(error)
+        })
+
+        // get class
+        fetch('./data/class.json').then((response) => {
+          return response.json()
+        }).then((json) => {
+          this.classes = json
+        }).catch((error) => {
+          Materialize.toast('Get data error.', 3000)
+          console.log(error)
+        })
+      }
+    })
+  </script>
+</body>
+
+</html>
